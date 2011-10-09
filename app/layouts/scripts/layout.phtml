@@ -1,14 +1,58 @@
 <?php echo $this->doctype(); ?>
-<html lang="<?php echo $this->Zend_Locale->getLanguage(); ?>">
+<?php
+	// Language code.
+	$lang = $this->Zend_Locale->getLanguage();
+	// Home link plus escaped version.
+	$home = '/'; // TODO: Use a route constructor here.
+	$e_home = $this->escape($home);
+	// Languages for language switcher.
+	// TODO: Use a route constructor here.
+	$langs = array(
+		'auf Deutsch' => '/de',
+		'en français' => '/fr',
+	);
+	// Social media links for social media bar.
+	$social = array(
+		'Twitter' => '',
+		'Facebook' => '',
+		'Flickr' => '',
+	);
+	// Function for generating a link list.
+	$linklist = function ($data) {
+		$r = array();
+		foreach ($data as $k => $v) {
+			$r[] = "<a href=\"$v\">$k</a>";
+		}
+		return implode('<span class="delim"> | </span>', $r);
+	};
+?>
+<html lang="<?php echo $lang; ?>" class="lang-<?php echo $lang; ?> no-js">
 
 <head>
-	<?php echo $this->headLink()->appendStylesheet('/css/2011.css'); ?>
+	<meta charset="UTF-8" />
+	<title>Val Sainte Marie</title>
+	<?php echo $this->headLink()->appendStylesheet('/css/2011/style.css'); ?>
 </head>
 
-<body>
+<body><div id="wrapper">
+<!-- TODO: Use HTML5 semantic tags where possible. -->
 
+<div id="top">
+	<h1><a href="<?php echo $e_home; ?>">Val Sainte Marie</a></h1>
+	<h2><a href="<?php echo $e_home; ?>"><?php echo __('subtitle'); ?></a></h2>
+	<div id="langswitch"><?php echo $linklist($langs); ?></div>
+	<div id="middle">
+		<div id="social"><?php echo $linklist($social); ?></div>
+	</div>
+</div>
+
+<div id="main">
 <?php echo $this->layout()->content; ?>
+</div>
 
-</body>
+<div id="bottom">
+</div>
+
+</div></body>
 
 </html>
