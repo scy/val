@@ -29,7 +29,7 @@
 <html lang="<?php echo $lang; ?>" class="lang-<?php echo $lang; ?> no-js">
 
 <head>
-	<meta charset="UTF-8" />
+	<?php echo $this->headMeta()->setCharset('UTF-8'); ?>
 	<title><?php if (isset($this->title)) {
 		echo $this->escape($this->title) . ' « ';
 	} ?>Val Sainte Marie</title>
