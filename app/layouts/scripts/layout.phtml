@@ -36,7 +36,9 @@
 	<?php echo $this->headLink()->appendStylesheet('/css/2011/style.css'); ?>
 </head>
 
-<body><div id="wrapper">
+<body<?php if (isset($this->id)) {
+	echo ' id="page-' . $this->id . '"';
+}?>><div id="wrapper">
 <!-- TODO: Use HTML5 semantic tags where possible. -->
 
 <div id="top">
