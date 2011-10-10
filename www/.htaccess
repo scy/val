@@ -4,3 +4,17 @@ RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
 RewriteRule ^.*$ index.php [NC,L]
+AddDefaultCharset UTF-8
+<IfModule mod_setenvif.c>
+	<IfModule mod_headers.c>
+		SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s,?\s(gzip|deflate)?|X{4,13}|~{4,13}|-{4,13})$ HAVE_Accept-Encoding
+		RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+	</IfModule>
+</IfModule>
+<IfModule filter_module>
+	FilterDeclare  COMPRESS
+	FilterProvider COMPRESS DEFLATE resp=Content-Type /text/(html|css|javascript|plain|x(ml|-component))/
+	FilterProvider COMPRESS DEFLATE resp=Content-Type /application/(javascript|json|xml|x-javascript)/
+	FilterChain    COMPRESS
+	FilterProtocol COMPRESS change=yes;byteranges=no
+</IfModule>
