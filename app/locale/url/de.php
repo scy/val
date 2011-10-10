@@ -3,7 +3,7 @@
 return array(
 	// Level 1
 	'house' => 'haus',
-	'association' => 'verein',
+	'rencontres' => 'rencontres',
 	'route-surroundings' => 'anfahrt-umgebung',
 	'booking' => 'buchen',
 	'contact' => 'kontakt',
