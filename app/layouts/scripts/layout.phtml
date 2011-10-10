@@ -30,7 +30,9 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>Val Sainte Marie</title>
+	<title><?php if (isset($this->title)) {
+		echo $this->escape($this->title) . ' « ';
+	} ?>Val Sainte Marie</title>
 	<?php echo $this->headLink()->appendStylesheet('/css/2011/style.css'); ?>
 </head>
 
