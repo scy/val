@@ -49,9 +49,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				'controller' => 'index',
 				'action'     => 'index',
 			)),
-			'normal' => array(':LOCALE/:@controller/:@action', array(
-				'controller' => 'index',
-				'action'     => 'index',
+			'static' => array(':LOCALE/:@lv1/:@lv2/:@lv3', array(
+				'controller' => 'static',
+				'action'     => 'static',
+				'lv1'        => null,
+				'lv2'        => null,
+				'lv3'        => null,
 			)),
 			// TODO: add third-level routing for “tours”.
 		);
@@ -78,6 +81,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	protected function _initViewVariables() {
 		$view = $this->getResource('view');
 		$view->Zend_Registry = Zend_Registry::get('Zend_Translate');
+	}
+
+	protected function _initViewRendererHelper() {
+		// Make view renderer available as getHelper('view') in controllers.
+		Zend_Controller_Action_HelperBroker::addHelper(new Zend_Controller_Action_Helper_ViewRenderer());
 	}
 
 }

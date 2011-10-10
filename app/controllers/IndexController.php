@@ -16,7 +16,7 @@ class IndexController extends ScyMultilang_Controller_Action
 			}
 			$this->_helper->getHelper('Redirector')->gotoRoute(array(
 				'LOCALE' => $switchTo,
-			), 'normal');
+			), 'static');
 		}
 		// action body
 	}
