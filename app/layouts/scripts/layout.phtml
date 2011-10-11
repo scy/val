@@ -3,7 +3,7 @@
 	// Language code.
 	$lang = $this->Zend_Locale->getLanguage();
 	// Home link plus escaped version.
-	$home = '/'; // TODO: Use a route constructor here.
+	$home = $this->url(array(), 'static', true);
 	$e_home = $this->escape($home);
 	// Languages for language switcher.
 	// TODO: Use a route constructor here.
