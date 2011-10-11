@@ -48,13 +48,13 @@
 	<h1><a href="<?php echo $e_home; ?>">Val Sainte Marie</a></h1>
 	<h2><a href="<?php echo $e_home; ?>"><?php echo __('subtitle'); ?></a></h2>
 	<div id="langswitch"><?php echo $linklist($langs); ?></div>
-	<div id="middle">
-		<div id="social"><?php echo $linklist($social); ?></div>
-	</div>
 </div>
 
-<div id="main">
+<div id="middle">
+	<div id="social"><?php echo $linklist($social); ?></div>
+	<div id="main">
 <?php echo $this->layout()->content; ?>
+	</div>
 </div>
 
 <div id="bottom">
