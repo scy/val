@@ -25,6 +25,14 @@
 		}
 		return implode('<span class="delim"> | </span>', $r);
 	};
+	// Which content divs to create and what to put inside them.
+	$contentareas = array('center', 'left', 'right');
+	if (!isset($this->contentgoes) || !in_array($this->contentgoes, $contentareas)) {
+		$this->contentgoes = $contentareas[0];
+	}
+	$content = array(
+		$this->contentgoes => $this->layout()->content,
+	);
 ?>
 <html lang="<?php echo $lang; ?>" class="lang-<?php echo $lang; ?> no-js">
 
@@ -53,7 +61,11 @@
 <div id="middle">
 	<div id="social"><?php echo $linklist($social); ?></div>
 	<div id="main">
-<?php echo $this->layout()->content; ?>
+		<?php foreach ($contentareas as $contentarea) {
+			if (isset($content[$contentarea])) {
+				?><div id="<?php echo $contentarea; ?>"><?php echo $content[$contentarea]; ?></div><?php
+			}
+		} ?>
 	</div>
 </div>
 
