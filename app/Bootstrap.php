@@ -56,7 +56,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				'lv2'        => null,
 				'lv3'        => null,
 			)),
-			// TODO: add third-level routing for “tours”.
 		);
 		$this->bootstrap('FrontController');
 		$fc = $this->getResource('FrontController');
