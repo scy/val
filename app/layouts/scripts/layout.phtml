@@ -32,14 +32,32 @@
 			'href' => $this->url(array('lv1' => $v), 'static', true),
 		);
 	}
-	// Which content divs to create and what to put inside them.
+	// Which content divs exist.
 	$contentareas = array('center', 'left', 'right');
-	if (!isset($this->contentgoes) || !in_array($this->contentgoes, $contentareas)) {
-		$this->contentgoes = $contentareas[0];
+	// Initialize the actual content array.
+	$content = array();
+	// Check if there is content placed in $this->content<area>, e.g.
+	// $this->contentleft. If set, add to $content.
+	foreach ($contentareas as $v) {
+		if (isset ($this->{"content$v"})) {
+			$content[$v] = $this->{"content$v"};
+		}
 	}
-	$content = array(
-		$this->contentgoes => $this->layout()->content,
-	);
+	// If $this->contentgoes is not set, select the first available position.
+	if (!isset($this->contentgoes) || !in_array($this->contentgoes, $contentareas)) {
+		// If no slot is available, the view’s content will go nowhere.
+		$this->contentgoes = null;
+		foreach ($contentareas as $v) {
+			if (!isset($content[$v])) {
+				$this->contentgoes = $v;
+				break;
+			}
+		}
+	}
+	// Place the view’s main content into $this->contentgoes.
+	if ($this->contentgoes !== null) {
+		$content[$this->contentgoes] = $this->layout()->content;
+	}
 ?>
 <html lang="<?php echo $lang; ?>" class="lang-<?php echo $lang; ?> no-js">
 
