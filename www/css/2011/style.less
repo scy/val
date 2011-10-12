@@ -184,6 +184,25 @@ span.delim {
 	}
 }
 
+div.image {
+	height: @grid;
+}
+
+div.label {
+	margin-top: 30px;
+	padding: 5px 25px;
+	float: left;
+	background-color: @darkgray;
+}
+
+html.rgba div.label {
+	background-color: fadeout(@darkgray, 20);
+}
+
+div.label:before {
+	content: '_';
+}
+
 p {
 	margin: 10px 0;
 	line-height: 1.2;

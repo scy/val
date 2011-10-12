@@ -60,6 +60,18 @@
 	if ($this->contentgoes !== null) {
 		$content[$this->contentgoes] = $this->layout()->content;
 	}
+	// If any of the contents is an array, convert to an image.
+	foreach ($content as $k => $v) {
+		if (is_array($v)) {
+			if (!isset($v['image'])) {
+				$v['image'] = "{$this->id}.jpg";
+			}
+			if (!isset($v['label'])) {
+				$v['label'] = __("{$this->id}-label");
+			}
+			$content[$k] = $this->partial('image.phtml', $v);
+		}
+	}
 ?>
 <html lang="<?php echo $lang; ?>" class="lang-<?php echo $lang; ?> no-js">
 
