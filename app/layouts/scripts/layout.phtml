@@ -34,6 +34,8 @@
 	}
 	// Which content divs exist.
 	$contentareas = array('center', 'left', 'right');
+	// In which order to output the content divs.
+	$contentoutputorder = array('left', 'right', 'center');
 	// Initialize the actual content array.
 	$content = array();
 	// Check if there is content placed in $this->content<area>, e.g.
@@ -91,7 +93,7 @@
 		echo $this->partialLoop('pipelist.phtml', $social);
 	?></div>
 	<div id="main">
-		<?php foreach ($contentareas as $contentarea) {
+		<?php foreach ($contentoutputorder as $contentarea) {
 			if (isset($content[$contentarea])) {
 				?><div id="<?php echo $contentarea; ?>"><?php echo $content[$contentarea]; ?></div><?php
 			}
