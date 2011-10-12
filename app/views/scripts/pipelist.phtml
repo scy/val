@@ -1,0 +1,7 @@
+<?php
+
+if ($this->partialCounter > 1) {
+	echo '<span class="delim"> | </span>';
+}
+
+printf('<a href="%s">%s</a>', $this->href, $this->text);
