@@ -20,18 +20,10 @@
 	}
 	// Social media links for social media bar.
 	$social = array(
-		'Twitter' => '',
-		'Facebook' => '',
-		'Flickr' => '',
+		array('text' => 'Twitter', 'href' => ''),
+		array('text' => 'Facebook', 'href' => ''),
+		array('text' => 'Flickr', 'href' => ''),
 	);
-	// Function for generating a link list.
-	$linklist = function ($data) {
-		$r = array();
-		foreach ($data as $k => $v) {
-			$r[] = "<a href=\"$v\">$k</a>";
-		}
-		return implode('<span class="delim"> | </span>', $r);
-	};
 	// Which content divs to create and what to put inside them.
 	$contentareas = array('center', 'left', 'right');
 	if (!isset($this->contentgoes) || !in_array($this->contentgoes, $contentareas)) {
@@ -68,7 +60,9 @@
 </div>
 
 <div id="middle">
-	<div id="social"><?php echo $linklist($social); ?></div>
+	<div id="social"><?php
+		echo $this->partialLoop('pipelist.phtml', $social);
+	?></div>
 	<div id="main">
 		<?php foreach ($contentareas as $contentarea) {
 			if (isset($content[$contentarea])) {
