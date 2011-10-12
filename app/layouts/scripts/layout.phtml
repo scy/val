@@ -89,7 +89,9 @@
 
 <body<?php if (isset($this->id)) {
 	echo ' id="page-' . $this->id . '"';
-}?>><div id="wrapper">
+} ?><?php if (isset($this->bodyclass)) {
+	echo ' class="' . (is_array($this->bodyclass) ? implode(' ', $this->bodyclass) : $this->bodyclass) . '"';
+} ?>><div id="wrapper">
 <!-- TODO: Use HTML5 semantic tags where possible. -->
 
 <div id="top">
