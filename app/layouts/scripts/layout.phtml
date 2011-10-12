@@ -24,6 +24,15 @@
 		array('text' => 'Facebook', 'href' => ''),
 		array('text' => 'Flickr', 'href' => ''),
 	);
+	// Bottom links.
+	$bottomitems = array('house', 'rencontres', 'route-surroundings', 'booking', 'contact');
+	$bottomlinks = array();
+	foreach ($bottomitems as $v) {
+		$bottomlinks[] = array(
+			'text' => __("bottom-$v"),
+			'href' => $this->url(array('lv1' => $v), 'static', true),
+		);
+	}
 	// Which content divs to create and what to put inside them.
 	$contentareas = array('center', 'left', 'right');
 	if (!isset($this->contentgoes) || !in_array($this->contentgoes, $contentareas)) {
@@ -73,6 +82,7 @@
 </div>
 
 <div id="bottom">
+	<?php echo $this->partialLoop('pipelist.phtml', $bottomlinks); ?>
 </div>
 
 </div></body>
