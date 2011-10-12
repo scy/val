@@ -189,8 +189,22 @@ div.image, a.image {
 	height: @grid;
 }
 
+body.chooser .image {
+	width: @grid;
+	float: left;
+}
+
 #main a.image {
 	font-style: normal;
+}
+
+body.choose6 {
+	#main {
+		overflow: auto;
+	}
+	#center {
+		width: 6 * @grid;
+	}
 }
 
 div.label {
