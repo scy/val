@@ -1,0 +1,32 @@
+<?php
+	$this->id = 'house';
+	$this->title = 'Das Haus';
+	$this->bodyclass = array('chooser', 'choose6');
+	echo $this->partialLoop('image.phtml', array(
+		array(
+			'image' => 'house-history.jpg',
+			'label' => 'Geschichte',
+			'href'  => array('lv2' => 'history'),
+		), array(
+			'image' => 'house-area.jpg',
+			'label' => 'Gelände',
+			'href'  => array('lv2' => 'area'),
+		), array(
+			'image' => 'house-rooms.jpg',
+			'label' => 'Zimmer',
+			'href'  => array('lv2' => 'rooms'),
+		), array(
+			'image' => 'house-sanitary.jpg',
+			'label' => 'Sanitär',
+			'href'  => array('lv2' => 'sanitary'),
+		), array(
+			'image' => 'house-kitchen.jpg',
+			'label' => 'Küche',
+			'href'  => array('lv2' => 'kitchen'),
+		), array(
+			'image' => 'house-dining-room.jpg',
+			'label' => 'Speisesaal',
+			'href'  => array('lv2' => 'dining-room'),
+		),
+	));
+?>
