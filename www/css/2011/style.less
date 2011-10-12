@@ -1,5 +1,190 @@
-@lightgray: #a3a3a3;
+// Color definitions.
+@lightgray:  #a3a3a3;
+@darkgray:   #8c8c8c;
+@black:      #000;
+@white:      #fff;
+@lightgreen: #688248;
+@darkgreen:  #2c4013;
+@brown:      #261311;
+
+@defaultfont: Helvetica,Arial,sans-serif;
+@headingfont: 'TitilliumMaps29L';
+
+@grid: 243px;
+
+// ***** RESET *****
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+// ***** END RESET *****
+
+@font-face {
+	font-family: 'TitilliumMaps29L';
+	src: url('TitilliumMaps29L.eot?') format('eot'),url('TitilliumMaps29L.woff') format('woff'),url('TitilliumMaps29L.ttf') format('ttf'),url('TitilliumMaps29L.svg#webfontgRcwvskg') format('svg');
+}
+
+a {
+	// TODO: Check whether this works on crappy browsers.
+	color: inherit;
+	text-decoration: none;
+}
 
 body {
 	background-color: @lightgray;
+	color: @darkgreen;
+	font-family: @defaultfont;
+	font-weight: lighter;
+	font-size: 15px;
+}
+
+#wrapper {
+	width: 3 * @grid;
+	margin: 50px auto;
+}
+
+#top {
+	margin: 50px 0;
+}
+
+#top, #social, #bottom, .label {
+	text-transform: lowercase;
+}
+
+h1, h2 {
+	color: @brown;
+	font-family: @headingfont,@defaultfont;
+}
+
+h1 {
+	font-size: 60px;
+}
+
+h2 {
+	font-size: 18px;
+	margin-bottom: 8px;
+}
+
+h3 {
+	font-size: 120%;
+	color: @white;
+}
+
+h4 {
+	font-weight: bold;
+	color: @white;
+}
+
+h5 {
+	color: @white;
+}
+
+#langswitch, #social {
+	font-size: 13px;
+}
+
+#langswitch, #social, .label {
+	color: @white;
+}
+
+span.delim {
+	padding: 0 2em;
+}
+
+#social {
+	text-align: center;
+	float: right;
+	padding-bottom: 10px;
+	span.delim {
+		padding: 0 1em;
+	}
+}
+
+#main {
+	clear: both;
+	height: @grid;
+	background-color: @darkgray;
+	a {
+		color: @white;
+		font-style: italic;
+	}
+}
+
+#left, #right, #social {
+	width: @grid;
+}
+
+#left, #right, #center {
+	height: @grid;
+	overflow: auto;
+}
+
+#left {
+	float: left;
+}
+
+#right {
+	float: right;
+}
+
+#bottom {
+	padding-top: 25px;
+	clear: both;
+	font-size: 16px;
+	text-align: center;
+	span.delim {
+		font-size: 130%;
+		padding: 0 0.8em;
+	}
+}
+
+p {
+	margin: 10px 0;
+	line-height: 1.2;
 }
