@@ -1,1 +1,11 @@
-<div class="image" style="background-image: url('<?php echo $this->baseUrl("/img/{$this->image}"); ?>');"><?php if (isset($this->label)) { ?><div class="label"><?php echo $this->escape($this->label); ?></div><?php } ?></div>
+<?php
+	// Whether we’re a link or a simple div.
+	$link = isset($this->href);
+	// The tag to use.
+	$tag  = $link ? 'a' : 'div';
+	// The href attribute. If $this->href is an array, use $this->url().
+	$href = $link ? (
+		is_array($this->href) ? $this->url($this->href) : $this->href
+	) : null;
+?>
+<<?php echo $tag . ($link ? " href=\"$href\"" : ''); ?> class="image" style="background-image: url('<?php echo $this->baseUrl("/img/{$this->image}"); ?>');"><?php if (isset($this->label)) { ?><div class="label"><?php echo $this->escape($this->label); ?></div><?php } ?></<?php echo $tag; ?>>
