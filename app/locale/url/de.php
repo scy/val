@@ -18,12 +18,12 @@ return array(
 	// Route and Surroundings
 	'map' => 'karte',
 	'sports' => 'sport',
-	'tours' => 'ausflugsziele', // TODO: find a better translation
+	'destinations' => 'ausflugsziele',
 	// Booking
 	'prices' => 'preise',
 	'calendar' => 'kalender',
 	// Contact
-	// Tours                    // TODO: find a better translation
+	// Destinations
 	'vicinity' => 'in-der-naehe',
 	'besancon' => 'besancon',
 	'ornans' => 'ornans',
