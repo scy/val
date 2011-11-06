@@ -4,6 +4,10 @@
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../app'));
 
+// Define path to www directory
+defined('WWW_PATH')
+    || define('WWW_PATH', realpath(APPLICATION_PATH . '/../www'));
+
 // Define application environment
 defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'live'));
