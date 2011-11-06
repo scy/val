@@ -28,6 +28,23 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->doctype('XHTML5');
 	}
 
+	protected function _initLESS() {
+		require_once 'lessphp/lessc.inc.php';
+		$cssdir = WWW_PATH . '/css/2011';
+		$lessfile = "$cssdir/style.less";
+		$cssfile  = "$cssdir/style.css";
+		if (file_exists($cssfile)) {
+			if (!is_writable($cssfile)) {
+				throw new Exception('cannot write CSS file');
+			}
+		} else {
+			if (!is_writable($cssdir)) {
+				throw new Exception('cannot write into CSS directory');
+			}
+		}
+		lessc::ccompile("$cssdir/style.less", "$cssdir/style.css");
+	}
+
 	protected function _initTranslate() {
 		$config = Zend_Registry::get('config');
 		$translate = new Zend_Translate(array(
