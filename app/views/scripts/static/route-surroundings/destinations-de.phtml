@@ -1,0 +1,20 @@
+<?php
+	$this->id = 'destinations';
+	$this->title = 'Ausflugsziele';
+	$this->bodyclass = array('chooser', 'choose3');
+	echo $this->partialLoop('image.phtml', array(
+		array(
+			'image' => 'destinations-vicinity.jpg',
+			'label' => 'in der Nähe',
+			'href'  => array('lv3' => 'vicinity'),
+		), array(
+			'image' => 'destinations-besancon.jpg',
+			'label' => 'Besançon',
+			'href'  => array('lv3' => 'besancon'),
+		), array(
+			'image' => 'destinations-ornans.jpg',
+			'label' => 'Ornans',
+			'href'  => array('lv3' => 'ornans'),
+		),
+	));
+?>
