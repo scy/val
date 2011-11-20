@@ -218,6 +218,14 @@ html.rgba div.label {
 	background-color: fadeout(@darkgray, 20);
 }
 
+body.choose6 a:hover div.label {
+	background-color: darken(@darkgray, 40%);
+}
+
+html.rgba body.choose6 a:hover div.label {
+	background-color: fadeout(darken(@darkgray, 60%), 20);
+}
+
 div.label:before {
 	content: '_';
 }
