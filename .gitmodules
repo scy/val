@@ -1,6 +1,6 @@
 [submodule "lib/ScyMultilang"]
 	path = lib/ScyMultilang
-	url = /Users/scy/proj/ScyMultilang
+	url = https://github.com/scy/ScyMultilang.git
 [submodule "lib/lessphp"]
 	path = lib/lessphp
 	url = https://github.com/leafo/lessphp.git
