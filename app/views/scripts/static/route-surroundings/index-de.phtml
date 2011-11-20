@@ -1,0 +1,20 @@
+<?php
+	$this->id = 'route-surroundings';
+	$this->title = 'Anfahrt und Umgebung';
+	$this->bodyclass = array('chooser', 'choose3');
+	echo $this->partialLoop('image.phtml', array(
+		array(
+			'image' => 'route-surroundings-map.jpg',
+			'label' => 'Karte',
+			'href'  => array('lv2' => 'map'),
+		), array(
+			'image' => 'route-surroundings-sports.jpg',
+			'label' => 'Sport',
+			'href'  => array('lv2' => 'sports'),
+		), array(
+			'image' => 'route-surroundings-destinations.jpg',
+			'label' => 'Ausflugsziele',
+			'href'  => array('lv2' => 'destinations'),
+		),
+	));
+?>
