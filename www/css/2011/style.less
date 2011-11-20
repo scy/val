@@ -234,3 +234,14 @@ p {
 	margin: 10px 0;
 	line-height: 1.2;
 }
+
+#map {
+	width: 2 * @grid;
+	height: @grid;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+html.js #map {
+	background-image: url('/img/ajax-loader.gif') !important;
+}
