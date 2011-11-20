@@ -198,11 +198,14 @@ body.chooser .image {
 	font-style: normal;
 }
 
-body.choose6 {
+body.chooser {
 	#main {
 		overflow: auto;
 		overflow-y: hidden;
 	}
+}
+
+body.choose6 {
 	#center {
 		width: 6 * @grid;
 	}
@@ -219,11 +222,11 @@ html.rgba div.label {
 	background-color: fadeout(@darkgray, 20);
 }
 
-body.choose6 a:hover div.label {
+body.chooser a:hover div.label {
 	background-color: darken(@darkgray, 40%);
 }
 
-html.rgba body.choose6 a:hover div.label {
+html.rgba body.chooser a:hover div.label {
 	background-color: fadeout(darken(@darkgray, 60%), 20);
 }
 
