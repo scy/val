@@ -1,0 +1,128 @@
+<?php
+	$this->id =    'booking';
+	$this->title = 'Buchen';
+	$this->contentright = '(Anfrageformular.)';
+
+// TODO: Lots of mockup stuff here. Use actual values and move stuff to the controller.
+
+	$this->year = 2011;
+	$this->month = 11;
+	// Getting rid of a warning.
+	date_default_timezone_set('Europe/Berlin');
+
+	function calendarNav($year, $month) {
+		$date = new Zend_Date(array('year' => $year, 'month' => $month, 'day' => 1));
+		$monthname = $date->get(Zend_Date::MONTH_NAME_SHORT);
+		// TODO: Build links for next and previous.
+		return "
+	<tr id=\"calendarNav\">
+		<th colspan=\"2\"> </th>
+		<th><a href=\"\">«</a></th>
+		<th><a href=\"\">&lt;</a></th>
+		<th colspan=\"3\">$monthname $year</th>
+		<th><a href=\"\">&gt;</a></th>
+		<th><a href=\"\">»</a></th>
+	</tr>";
+	}
+
+	function calendarEntry($year, $month, $day) {
+		$s = array('free', 'occupied', 'occupiedByUs', 'closed');
+		$r = mt_rand(0, 10);
+		return isset($s[$r]) ? $s[$r] : $s[0];
+	}
+
+function calendarCell($year, $month, $day, $classes) {
+	return array(
+		'year' => $year,
+		'month' => $month,
+		'day' => $day,
+		'time' => gmmktime(0, 0, 0, $month, $day, $year),
+		'classes' => array_merge($classes, array(calendarEntry($year, $month, $day))),
+	);
+}
+
+function calendarArray($year, $month) {
+	if (!checkdate($month, 1, $year)) {
+		return false;
+	}
+	$monthstart = gmmktime(0, 0, 0, $month, 1, $year);
+	$monthstartwkday = date('N', $monthstart);
+	$daysfromlastmonth = $monthstartwkday - 1;
+	$lastmonthmonth = ($month == 1 ? 12 : $month - 1);
+	$lastmonthyear = ($month == 1 ? $year - 1 : $year);
+	$lastdaylastmonth = 31;
+	while (!checkdate($lastmonthmonth, $lastdaylastmonth, $lastmonthyear)) {
+		$lastdaylastmonth--;
+	}
+	$array = array(array());
+	$row = 0;
+	$inrow = 0;
+	$dayfromlastmonth = $lastdaylastmonth - ($daysfromlastmonth - 1);
+	for ($i = 0; $i < $daysfromlastmonth; $i++) {
+		$array[0][] = calendarCell($lastmonthyear, $lastmonthmonth, $dayfromlastmonth, array('lastmonth', 'passivemonth'));
+		$inrow++;
+		$dayfromlastmonth++;
+	}
+	for ($day = 1; checkdate($month, $day, $year); $day++) {
+		if (!isset($array[$row])) {
+			$array[$row] = array();
+		}
+		$array[$row][] = calendarCell($year, $month, $day, array('thismonth', 'activemonth'));
+		$inrow++;
+		if ($inrow > 6) {
+			$inrow = 0;
+			$row++;
+		}
+	}
+	$year = ($month == 12 ? $year + 1 : $year);
+	$month = ($month == 12 ? 1 : $month + 1);
+	$day = 1;
+	for (; $inrow < 7; $inrow++) {
+		$array[$row][] = calendarCell($year, $month, $day, array('nextmonth', 'passivemonth'));
+		$day++;
+	}
+	return $array;
+}
+
+function calendarTable($year, $month) {
+	$legend = array(
+		1 => 'free',
+		2 => 'occupied',
+		3 => 'occupiedByUs',
+		4 => 'closed',
+	);
+	$array = calendarArray($year, $month);
+	if (!is_array($array)) {
+		return '';
+	}
+	$r  = "<table>\n";
+	$r .= calendarNav($year, $month);
+	$r .= "\n<tr><th colspan=\"2\"> </th>";
+	for ($i = 1; $i < 8; $i++) {
+		$r .= '<th>' . __('wkd' . ($i % 7)) . '</th>';
+	}
+	$rownum = 0;
+	foreach ($array as $row) {
+		$r .= "\n	<tr>";
+		if (isset($legend[++$rownum])) {
+			$text = __('cal-' . $legend[$rownum]);
+			$r .= "\n		<td class=\"legend {$legend[$rownum]}\"> </td>\n		<td class=\"legendtext\">$text</td>";
+		} else {
+			$r .= "\n		<td colspan=\"2\" class=\"legend\"> </td>";
+		}
+		foreach ($row as $col) {
+			$classes = implode(' ', $col['classes']);
+			$r .= "\n		<td class=\"$classes\">{$col['day']}</td>";
+		}
+		$r .= "\n	</tr>";
+	}
+	$r .= "\n</table>";
+	return $r;
+}
+
+?>
+<div id="calendar">
+	<div class="tableWrapper">
+<?php echo calendarTable($this->year, $this->month); ?>
+	</div>
+</div>

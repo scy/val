@@ -275,3 +275,63 @@ p {
 html.js #map {
 	background-image: url('/img/ajax-loader.gif') !important;
 }
+
+/** TODO:
+ * Color constants and general cleaning up. The whole calendar stuff was
+ * hastily hacked together.
+ */
+
+#page-booking #right {
+	background-color: #2c4013;
+	color: #fff;
+}
+
+#calendar {
+	position: relative;
+	.tableWrapper {
+		position: absolute;
+		right: 10px;
+		top: 5px;
+	}
+	table {
+		border-collapse: collapse;
+	}
+	.legend {
+		background-color: #8c8c8c;
+		width: 30px;
+	}
+	th {
+		text-align: center;
+		padding: 4px 0;
+		width: 40px;
+	}
+	td.legendtext {
+		width: 130px;
+		color: #2c4013;
+		font-size: 85%;
+	}
+	th a {
+		font-style: normal;
+	}
+	td {
+		text-align: left;
+		padding: 4px 4px 9px 4px;
+		border: 2px solid #8c8c8c;
+		color: #fff;
+	}
+	.free {
+		background-color: #a6a6a6;
+	}
+	.occupied {
+		background-color: #2c4013;
+	}
+	.occupiedByUs {
+		background-color: #688248;
+	}
+	.closed {
+		background-color: #666;
+	}
+	.passivemonth {
+		opacity: 0.3;
+	}
+}
