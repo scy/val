@@ -68,13 +68,18 @@
 	// If any of the contents is an array, convert to an image.
 	foreach ($content as $k => $v) {
 		if (is_array($v)) {
-			if (!isset($v['image'])) {
-				$v['image'] = "{$this->id}.jpg";
+			if (isset($v['slideshow'])) {
+				$content[$k] = $this->partialLoop('image.phtml', $v['slideshow']);
+				$contentwrap[$k] = 'slideshow';
+			} else {
+				if (!isset($v['image'])) {
+					$v['image'] = "{$this->id}.jpg";
+				}
+				if (!isset($v['label'])) {
+					$v['label'] = __("{$this->id}-label");
+				}
+				$content[$k] = $this->partial('image.phtml', $v);
 			}
-			if (!isset($v['label'])) {
-				$v['label'] = __("{$this->id}-label");
-			}
-			$content[$k] = $this->partial('image.phtml', $v);
 		}
 	}
 ?>
@@ -91,6 +96,7 @@
 	<script src="/js/modernizr.custom.75444.js" type="text/javascript"></script>
 	<script src="/js/jquery-1.6.4.min.js" type="text/javascript"></script>
 	<script src="/js/jquery.cookie-1.0.0.js" type="text/javascript"></script>
+	<script src="/js/jquery.cycle.lite.js" type="text/javascript"></script>
 	<script src="/js/valsaintemarie.js" type="text/javascript"></script>
 </head>
 

@@ -62,6 +62,13 @@
 			};
 			// Initialize arrows.
 			updateArrows();
+		},
+		// Initialize slideshow, if any.
+		function ($) {
+			$('.slideshow').cycle({
+				fx: 'fade',
+				timeout: 7000
+			});
 		}
 	];
 	window.valsaintemarie = (function ($) {
