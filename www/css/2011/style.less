@@ -203,6 +203,32 @@ body.chooser {
 		overflow: auto;
 		overflow-y: hidden;
 	}
+	#center {
+		position: relative;
+	}
+	.scroll-arrow {
+		position: absolute;
+		width: 26px;
+		height: 51px;
+		bottom: 45px;
+		cursor: pointer;
+		background-image: url('/img/arrows.png');
+		background-repeat: none none;
+	}
+	.arrow-left {
+		right: 3 * @grid - 32;
+		background-position: -90px 0;
+	}
+	.arrow-left-active {
+		background-position: -60px 0;
+	}
+	.arrow-right {
+		left: 3 * @grid - 32;
+		background-position: 0 0;
+	}
+	.arrow-right-active {
+		background-position: -30px 0;
+	}
 }
 
 body.choose6 {
