@@ -10,7 +10,8 @@
 @defaultfont: Helvetica,Arial,sans-serif;
 @headingfont: 'TitilliumMaps29L';
 
-@grid: 243px;
+@grid:       243px;
+@textmargin: 10px;
 
 // ***** RESET *****
 
@@ -184,6 +185,10 @@ span.delim {
 	}
 }
 
+.bodytext {
+	margin: @textmargin;
+}
+
 div.image, a.image {
 	display: block;
 	height: @grid;
@@ -261,7 +266,7 @@ div.label:before {
 }
 
 p {
-	margin: 10px 0;
+	margin: @textmargin 0;
 	line-height: 1.2;
 }
 

@@ -36,6 +36,8 @@
 	$contentareas = array('center', 'left', 'right');
 	// In which order to output the content divs.
 	$contentoutputorder = array('left', 'right', 'center');
+	// Which content divs contain body text that should be auto-wrapped?
+	$wrapbodytextin = isset($this->bodytextin) ? explode(' ', $this->bodytextin) : array();
 	// Initialize the actual content array.
 	$content = array();
 	// Check if there is content placed in $this->content<area>, e.g.
@@ -111,7 +113,12 @@
 	<div id="main">
 		<?php foreach ($contentoutputorder as $contentarea) {
 			if (isset($content[$contentarea])) {
-				?><div id="<?php echo $contentarea; ?>"><?php echo $content[$contentarea]; ?></div><?php
+				?><div id="<?php echo $contentarea; ?>">
+					<?php printf(in_array($contentarea, $wrapbodytextin)
+					             ? '<div class="bodytext">%s</div>'
+					             : '%s'
+					             , $content[$contentarea]); ?>
+				</div><?php
 			}
 		} ?>
 	</div>
