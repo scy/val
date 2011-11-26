@@ -4,8 +4,11 @@
 	var onload = [
 		// Remember scroll position on choose6 pages.
 		function ($) {
-			var name = 'scrollpos-' + $('body').attr('id');
 			var $div = $('body.choose6 #main');
+			if (!$div.length) {
+				return;
+			}
+			var name = 'scrollpos-' + $('body').attr('id');
 			$div.scroll(function (ev) {
 				$.cookie(name, $div.scrollLeft());
 			});
